@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boba Fett - About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+        .background {
+            background-image: url('https://images.wallpapersden.com/image/download/star-wars-boba-fett-fan-poster_bGtoZ2qUmZqaraWkpJRobWllrWdmZWg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            z-index: -1;
+        }
+        .custom-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="background"></div>
+
+    <header class="fixed top-0 left-0 right-0 p-4 bg-black bg-opacity-70 flex justify-between items-center z-50">
+        <h1 class="text-2xl font-bold">Boba Fett</h1>
+        <button id="menu-toggle" class="text-white focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="navbar" class="hidden flex-col bg-black bg-opacity-70 p-4 rounded-lg">
+            <a href="index.html" class="py-2 hover:text-neon">Home</a>
+            <a href="about.html" class="py-2 hover:text-neon">About</a>
+        </nav>
+        <div class="player fixed bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70">
+            <audio id="audio" src="assets/audio.mp3" preload="auto"></audio>
+            <button id="play-btn"><i class="fas fa-play"></i></button>
+            <button id="pause-btn" class="hidden"><i class="fas fa-pause"></i></button>
+            <div class="text-sm">Música tema de Boba Fett</div>
+        </div>
+    </header>
+
+    <main class="p-8 flex flex-col items-center justify-center mt-24">
+        <div class="custom-card w-full max-w-md text-center">
+            <h2 class="text-2xl font-bold">Sobre Boba Fett</h2>
+            <p>Boba Fett é um icônico caçador de recompensas do universo de Star Wars, conhecido por sua armadura mandaloriana e habilidades excepcionais.</p>
+        </div>
+
+        <div class="custom-card w-full max-w-md text-center">
+            <h3 class="text-xl font-semibold mt-4">Informações Relevantes</h3>
+            <ul class="list-disc ml-6 text-left">
+                <li>Nome: Boba Fett</li>
+                <li>Espécie: Humano</li>
+                <li>Afiliado: Sindicato dos Caçadores de Recompensa</li>
+                <li>Primeira Aparição: Star Wars: Episódio V - O Império Contra-Ataca (1980)</li>
+            </ul>
+        </div>
+
+        <div class="custom-card w-full max-w-md text-center">
+            <h3 class="text-xl font-semibold mt-4">Aparições em Filmes</h3>
+            <table class="min-w-full border border-white">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Filme</th>
+                        <th class="border px-4 py-2">Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Star Wars: Episódio V</td>
+                        <td class="border px-4 py-2">1980</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Star Wars: Episódio VI</td>
+                        <td class="border px-4 py-2">1983</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Star Wars: The Clone Wars</td>
+                        <td class="border px-4 py-2">2008</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">The Mandalorian</td>
+                        <td class="border px-4 py-2">2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbar = document.getElementById('navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('hidden');
+        });
+
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+
+        playBtn.addEventListener('click', () => {
+            audio.play();
+            playBtn.classList.add('hidden');
+            pauseBtn.classList.remove('hidden');
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            audio.pause();
+            pauseBtn.classList.add('hidden');
+            playBtn.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
